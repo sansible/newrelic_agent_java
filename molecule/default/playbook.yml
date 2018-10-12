@@ -1,0 +1,19 @@
+---
+
+- name: Converge
+  hosts: all
+
+  pre_tasks:
+    - name: Install net-tools
+      become: yes
+      apt:
+        name: net-tools
+        update_cache: yes
+        cache_valid_time: 3600
+
+  roles:
+    - role: newrelic_agent_java
+      sansible_newrelic_agent_java_install_dir: /opt/newrelic-test-agent-java
+      sansible_newrelic_agent_java_settings:
+        app_name: Test Application
+        license_key: 123456789123456789123456789123456789

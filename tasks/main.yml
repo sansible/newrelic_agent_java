@@ -1,0 +1,11 @@
+---
+
+- name: Install New Relic Java Agent
+  include: install.yml
+  tags:
+    - build
+
+- name: Configure New Relic Java Agent
+  include: configure.yml
+  tags:
+    - configure

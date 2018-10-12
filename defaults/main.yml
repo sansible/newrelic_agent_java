@@ -1,0 +1,11 @@
+---
+
+sansible_newrelic_agent_java_configuration_file_mode: u+rw,og+r
+sansible_newrelic_agent_java_install_dir: /opt/newrelic-agent-java
+sansible_newrelic_agent_java_group: "{{ ansible_user_id }}"
+sansible_newrelic_agent_java_user: "{{ ansible_user_id }}"
+# all versions are available here http://apt.newrelic.com/newrelic/java-agent/newrelic-agent/
+sansible_newrelic_agent_java_version: current
+
+# check vars/main.yml for all available settings
+sansible_newrelic_agent_java_settings: {}

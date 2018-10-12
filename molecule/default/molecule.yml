@@ -1,0 +1,42 @@
+---
+
+driver:
+  name: docker
+
+platforms:
+  - name: sansible_newrelic_agent_java-trusty
+    image: ubuntu:trusty
+  - name: sansible_newrelic_agent_java-xenial
+    image: ubuntu:xenial
+  - name: sansible_newrelic_agent_java-bionic
+    image: ubuntu:bionic
+
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+
+lint:
+  name: yamllint
+  options:
+    config-data:
+      extends: default
+      ignore: .venv_ansible*
+      rules:
+        line-length:
+          max: 150
+        truthy: disable
+
+dependency:
+  name: galaxy
+  options:
+    ignore-certs: True
+    role-file: requirements.yml
+
+scenario:
+  name: default
+
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
