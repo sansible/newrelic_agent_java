@@ -1,0 +1,36 @@
+---
+
+group: stable
+dist: trusty
+sudo: required
+
+language: python
+python:
+  - 2.7
+cache: pip
+
+branches:
+  only:
+    - develop
+    - master
+
+env:
+  - ANSIBLE_INSTALL_VERSION=2.4.6.0
+  - ANSIBLE_INSTALL_VERSION=2.5.10
+  - ANSIBLE_INSTALL_VERSION=2.6.5
+
+services:
+  - docker
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-ce
+
+install:
+  - make .venv
+
+script:
+  - make test
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
