@@ -1,0 +1,15 @@
+---
+
+- name: Ensure folder for New Relic Java agent
+  become: yes
+  file:
+    group: "{{ sansible_newrelic_agent_java_group }}"
+    owner: "{{ sansible_newrelic_agent_java_user}}"
+    path: "{{ sansible_newrelic_agent_java_install_dir }}"
+    state: directory
+
+- name: Download New Relic Java agent
+  become: yes
+  get_url:
+    url: http://apt.newrelic.com/newrelic/java-agent/newrelic-agent/{{ sansible_newrelic_agent_java_version }}/newrelic.jar
+    dest: "{{ sansible_newrelic_agent_java_install_dir }}/newrelic.jar"

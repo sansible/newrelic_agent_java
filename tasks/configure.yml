@@ -1,0 +1,13 @@
+---
+
+- name: Configure New Relic Java agent
+  become: yes
+  template:
+    dest: "{{ sansible_newrelic_agent_java_install_dir }}/newrelic.yml"
+    group: "{{ sansible_newrelic_agent_java_group }}"
+    mode: "{{ sansible_newrelic_agent_java_configuration_file_mode }}"
+    owner: "{{ sansible_newrelic_agent_java_user }}"
+    src: newrelic.yml.j2
+  vars:
+    common: "{{ sansible_newrelic_agent_java_default_settings
+      | combine(sansible_newrelic_agent_java_settings) }}"

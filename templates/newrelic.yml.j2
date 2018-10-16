@@ -1,0 +1,21 @@
+# {{ ansible_managed }}
+# For more details and additional configuration options visit
+# https://docs.newrelic.com/docs/java/java-agent-configuration.
+
+common: &default_settings
+{{ common | to_nice_yaml | indent(2, first=true) }}
+
+# Application Environments
+# ------------------------------------------
+# Environment specific settings are in this section.
+# You can use the environment to override the default settings.
+# For example, to change the app_name setting.
+# Use -Dnewrelic.environment=<environment> on the Java startup command line
+# to set the environment.
+# The default environment is production.
+
+# NOTE if your application has other named environments, you should
+# provide configuration settings for these environments here.
+
+production:
+  <<: *default_settings
