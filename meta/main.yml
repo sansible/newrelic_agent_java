@@ -3,7 +3,6 @@
 # For supported options, see https://galaxy.ansible.com/intro#meta
 
 galaxy_info:
-  author: ~
   description: Installs NewRelive Java Agent
   # company: optional
 
